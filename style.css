@@ -1,0 +1,38 @@
+div {
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.calculator-container {
+    width: 35%;
+    height: 70vh;
+    margin: auto;
+    background-color: peru;
+}
+
+.screen-container {
+    width: 100%;
+    height: 20%;
+    background-color: pink;
+}
+
+.bottom-container {
+    height: 80%;
+    width: 100%;
+    background-color: blueviolet;
+    display: flex;
+}
+
+.operations-container {
+    width: 20%;
+    height: 100%;
+    background-color: beige;
+}
+
+.numbers-container {
+    width: 80%;
+    height: 100%;
+    background-color: papayawhip;
+}
+
+
