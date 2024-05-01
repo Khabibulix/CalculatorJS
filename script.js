@@ -1,8 +1,9 @@
-let operator = "*";
-let numberOne = 5;
-let numberTwo = 6;
 const NUMBERS = document.querySelectorAll(".number");
+const OPERATIONS = document.querySelectorAll(".operations-container div")
+let clearButton = document.querySelector("#clear");
 let screen = document.querySelector(".screen");
+let numberHistory = [];
+let currentOperation = "";
 
 function operate(operation, numberOne, numberTwo) {
     if (Number.isInteger(numberOne + numberTwo)) {
@@ -22,5 +23,16 @@ function operate(operation, numberOne, numberTwo) {
 NUMBERS.forEach(function(item) {
     item.addEventListener("click", () =>{
         screen.textContent = item.id;
+        numberHistory.push(item.id);
     });
+});
+
+OPERATIONS.forEach(function(item) {
+    item.addEventListener("click", () =>{
+        currentOperation = item.textContent;
+    });
+});
+
+clearButton.addEventListener("click", () => {
+    screen.textContent = "";
 });
