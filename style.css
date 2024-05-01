@@ -1,19 +1,20 @@
 div {
     box-sizing: border-box;
-    border: 1px solid black;
+    color: white;
 }
 
 .calculator-container {
     width: 35%;
     height: 70vh;
     margin: auto;
-    background-color: peru;
+    margin-top: 30px;
+    background-color: #1877F2;
+    border-radius: 10%;
 }
 
 .screen-container {
     width: 100%;
     height: 20%;
-    background-color: pink;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -21,44 +22,46 @@ div {
 }
 
 .screen {
-    width: 90%;
-    height: 70%;
-    background-color: black;
-    color: white;
+    width: 60%;
+    height: 50%;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
     font-weight: bold;
+    background-color: #fff;
+    color: #1877F2;
 }
 
 .bottom-container {
     height: 80%;
     width: 100%;
-    background-color: blueviolet;
     display: flex;
 }
 
 .operations-container {
     width: 20%;
     height: 100%;
-    background-color: beige;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-evenly;    
 }
 
 .operations-container div {
     height: 20%;
-    width: 90%;
+    width: 80%;
     text-align: center;
     padding-top: 20px;
-    background-color: lightcyan;
-    margin-left: 5px;
+    margin-left: 20px;
+    border-radius: 15%;
+}
+
+.operations-container div:hover {
+    background-color: white;
+    color: #1877F2;
 }
 
 .numbers-container {
     width: 80%;
     height: 100%;
-    background-color: papayawhip;
     display: flex;
     flex-wrap: wrap;
 }
@@ -69,7 +72,12 @@ div {
     margin: 5px;
     text-align: center;
     padding-top: 20px;
-    background-color: violet;
+    border-radius: 15%;
+}
+
+.numbers-container div:hover {
+    background-color: white;
+    color: #1877F2;
 }
 
 #clear {
