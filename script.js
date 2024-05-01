@@ -25,23 +25,28 @@ function operate(operation, numberOne, numberTwo) {
 
 NUMBERS.forEach(function(item) {
     item.addEventListener("click", () =>{
-        numberHistory.push(item.id);
+        screen.textContent += item.id;            
     });
 });
 
 OPERATIONS.forEach(function(item) {
-    item.addEventListener("click", () =>{
-        currentOperation = item.textContent;
+    item.addEventListener("click", () =>{        
+        numberHistory.push(screen.textContent); 
+        screen.textContent = "";
+        currentOperation = item.textContent;  
     });
 });
 
 clearButton.addEventListener("click", () => {
     screen.textContent = "";
+    numberHistory.length = 0;
 });
 
 equalButton.addEventListener("click", () => {
+    numberHistory.push(screen.textContent);   
     let result = operate(currentOperation, numberHistory[0], numberHistory[1]);
     numberHistory.length = 0;
     screen.textContent = result;
     numberHistory.push(result);
+    currentOperation = "";
 });
