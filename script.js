@@ -21,8 +21,12 @@ function operate(operation, numberOne, numberTwo) {
         case '*':
             return getFloatWithJustEnoughDecimals(numberOne * numberTwo);
         case '/':
-
-            return getFloatWithJustEnoughDecimals(numberOne / numberTwo);
+            if (numberTwo !== 0) {
+                return getFloatWithJustEnoughDecimals(numberOne / numberTwo);
+            } else {
+                return 0;
+            }
+            
     }
 }
 
