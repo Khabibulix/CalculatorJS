@@ -1,3 +1,9 @@
+body {
+    background-image: url(pics/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 div {
     box-sizing: border-box;
     color: white;
@@ -52,6 +58,8 @@ div {
     padding-top: 20px;
     margin-left: 20px;
     border-radius: 15%;
+    background-color: #2a5894 ;
+    color: white;
 }
 
 .operations-container div:hover {
