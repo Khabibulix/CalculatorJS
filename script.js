@@ -7,41 +7,43 @@ let equalButton = document.querySelector("#equal");
 let numberHistory = 0;
 let currentOperation = "";
 
+function getFloatWithJustEnoughDecimals(integer) {
+    //Strange code because ToFixed return a string
+    return parseFloat(Number.parseFloat(integer).toFixed(5));
+}
+
 function operate(operation, numberOne, numberTwo) {
-    numberOne = parseInt(numberOne);
-    numberTwo = parseInt(numberTwo);
-    switch (operation){
+    switch (operation) {
         case '+':
-            return numberOne + numberTwo;
+            return getFloatWithJustEnoughDecimals(numberOne + numberTwo);
         case '-':
-            return numberOne - numberTwo;
+            return getFloatWithJustEnoughDecimals(numberOne - numberTwo);
         case '*':
-            return numberOne * numberTwo;
+            return getFloatWithJustEnoughDecimals(numberOne * numberTwo);
         case '/':
-            // code ici pour divisions cheloues
-            return numberOne / numberTwo;
+
+            return getFloatWithJustEnoughDecimals(numberOne / numberTwo);
     }
 }
 
 function calculateAndDisplayResult() {
-    screen.textContent = operate(currentOperation, numberHistory, screen.textContent);
-    numberHistory = screen.textContent;
+    screen.textContent = operate(currentOperation, getFloatWithJustEnoughDecimals(numberHistory), getFloatWithJustEnoughDecimals(screen.textContent));
+    numberHistory = getFloatWithJustEnoughDecimals(screen.textContent);
     currentOperation = "";
 }
 
-NUMBERS.forEach(function(item) {
-    item.addEventListener("click", () =>{
-        screen.textContent += item.id;            
+NUMBERS.forEach(function (item) {
+    item.addEventListener("click", () => {
+        screen.textContent += item.id;
     });
 });
 
-OPERATIONS.forEach(function(item) {
-    item.addEventListener("click", () =>{        
-        numberHistory = screen.textContent;
+OPERATIONS.forEach(function (item) {
+    item.addEventListener("click", () => {
+        numberHistory = getFloatWithJustEnoughDecimals(screen.textContent);
         screen.textContent = "";
-        // Gérer cas de l'opération déjà présente!
-        currentOperation = item.textContent; 
-         
+        currentOperation = item.textContent;
+
     });
 });
 
