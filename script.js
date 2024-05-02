@@ -23,6 +23,12 @@ function operate(operation, numberOne, numberTwo) {
     }
 }
 
+function calculateAndDisplayResult() {
+    screen.textContent = operate(currentOperation, numberHistory, screen.textContent);
+    numberHistory = screen.textContent;
+    currentOperation = "";
+}
+
 NUMBERS.forEach(function(item) {
     item.addEventListener("click", () =>{
         screen.textContent += item.id;            
@@ -31,11 +37,11 @@ NUMBERS.forEach(function(item) {
 
 OPERATIONS.forEach(function(item) {
     item.addEventListener("click", () =>{        
-        numberHistory = screen.textContent; 
-        console.log("numberHistory in operations event listener");
-        console.log(numberHistory);
+        numberHistory = screen.textContent;
         screen.textContent = "";
-        currentOperation = item.textContent;  
+        // Gérer cas de l'opération déjà présente!
+        currentOperation = item.textContent; 
+         
     });
 });
 
@@ -44,11 +50,4 @@ clearButton.addEventListener("click", () => {
     numberHistory = 0;
 });
 
-equalButton.addEventListener("click", () => {  
-    // console.log(`${numberHistory} ${currentOperation} ${screen.textContent}`)    
-    // console.log("numberHistory in equal event listener");
-    let result = operate(currentOperation, numberHistory, screen.textContent);
-    screen.textContent = result;
-    numberHistory = result;
-    currentOperation = "";
-});
+equalButton.addEventListener("click", (calculateAndDisplayResult));
