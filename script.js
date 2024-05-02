@@ -4,7 +4,7 @@ const OPERATIONS = document.querySelectorAll(".operations-container div")
 let clearButton = document.querySelector("#clear");
 let screen = document.querySelector(".screen");
 let equalButton = document.querySelector("#equal");
-let numberHistory = [];
+let numberHistory = 0;
 let currentOperation = "";
 
 function operate(operation, numberOne, numberTwo) {
@@ -31,7 +31,9 @@ NUMBERS.forEach(function(item) {
 
 OPERATIONS.forEach(function(item) {
     item.addEventListener("click", () =>{        
-        numberHistory.push(screen.textContent); 
+        numberHistory = screen.textContent; 
+        console.log("numberHistory in operations event listener");
+        console.log(numberHistory);
         screen.textContent = "";
         currentOperation = item.textContent;  
     });
@@ -39,14 +41,14 @@ OPERATIONS.forEach(function(item) {
 
 clearButton.addEventListener("click", () => {
     screen.textContent = "";
-    numberHistory.length = 0;
+    numberHistory = 0;
 });
 
-equalButton.addEventListener("click", () => {
-    numberHistory.push(screen.textContent);   
-    let result = operate(currentOperation, numberHistory[0], numberHistory[1]);
-    numberHistory.length = 0;
+equalButton.addEventListener("click", () => {  
+    // console.log(`${numberHistory} ${currentOperation} ${screen.textContent}`)    
+    // console.log("numberHistory in equal event listener");
+    let result = operate(currentOperation, numberHistory, screen.textContent);
     screen.textContent = result;
-    numberHistory.push(result);
+    numberHistory = result;
     currentOperation = "";
 });
